@@ -12,58 +12,53 @@
             justify-content: center;
             height: 100vh;
             font-family: Arial, sans-serif;
-            padding: 0 10px;
-        }
-        h1 {
-            font-size: 20px;
-            text-align: center;
-            margin: 0px 0;
-        }
-        .hour-section {
-            font-size: 16px;
-            margin-bottom: 15px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px; /* Space between the input and label */
-            flex-wrap: wrap;
-        }
-        #hourInput, #closeHourInput {
-            width: 60px; /* Set the width of the input box to make it smaller */
-            padding: 5px;
-            font-size: 14px;
-            text-align: center;
         }
         .counter-section {
-            margin: 5px 0;
+            margin: 0; /* Remove space between counters */
             text-align: center;
-            display: flex;
-            flex-direction: column;
+        }
+        h1 {
+            font-size: 16px;
+            margin: 10;
+            margin-bottom: 0px;
+        }
+        .hour-section {
+            font-size: 12px;
+            margin-bottom: 10px;
+            text-align: center;
+            display: inline-flex;
             align-items: center;
+            gap: 5px; /* Space between the input and label */
+        }
+        #hourInput, #closeHourInput {
+            width: 50px; /* Set the width of the input box to make it smaller */
+            padding: 1px;
+            font-size: 12px;
+        }
+        #hourInput, #openHourInput {
+            width: 50px; /* Set the width of the input box to make it smaller */
+            padding: 1px;
+            font-size: 12px;
         }
         h2 {
-            font-size: 16px;
-            margin: 5px 0;
+            font-size: 10px;
         }
         .counter-display {
-            font-size: 16px;
-            margin: 5px 0;
+            font-size: 10px;
+            margin: 5px;
         }
         button {
             padding: 10px;
-            font-size: 18px; /* Increase font size for better touchability */
+            font-size: 14px; /* Adjust font size for symbols */
             margin: 5px;
-            width: 50px; /* Adjust width for symbols */
+            width: 40px; /* Adjust width for symbols */
             cursor: pointer;
-            border-radius: 5px;
         }
         .copy-button {
-            font-size: 16px;
-            padding: 10px 20px;
-            margin-top: 15px;
+            font-size: 12px;
+            padding: 5px 10px;
+            margin-top: 10px;
             cursor: pointer;
-            border-radius: 5px;
         }
     </style>
 </head>
@@ -72,13 +67,13 @@
 <h1 id="title">חסם באקה 427</h1>
 
 <div class="hour-section">
-    <label for="openHourInput">פתיחת שער:</label>
     <input type="text" id="openHourInput" placeholder="">
+    <label for="openHourInput">:פתיחת שער</label>
 </div>
 
 <div class="hour-section">
-    <label for="closeHourInput">סגירת שער:</label>
     <input type="text" id="closeHourInput" placeholder="">
+    <label for="closeHourInput">:סגירת שער</label>
 </div>
 
 <!-- Counter sections -->
@@ -119,6 +114,7 @@
 
 <!-- Copy button -->
 <button class="copy-button" onclick="copyData()">Copy</button>
+
 
 <script>
     // Array to hold counts for each counter
@@ -162,6 +158,7 @@
         });
     }
 </script>
+
 
 </body>
 </html>
