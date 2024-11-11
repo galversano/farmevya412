@@ -12,53 +12,60 @@
             justify-content: center;
             height: 100vh;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         .counter-section {
-            margin: 0; /* Remove space between counters */
+            margin: 5px 0;
             text-align: center;
+            padding: 8px;
+            border: 1px solid blue;
+            border-radius: 5px;
+            width: 90%;
         }
         h1 {
-            font-size: 16px;
-            margin: 10;
-            margin-bottom: 3px;
+            font-size: 14px;
+            margin: 8px;
         }
         .hour-section {
-            font-size: 12px;
-            margin-bottom: 10px;
-            text-align: center;
-            display: inline-flex;
+            font-size: 10px;
+            margin-bottom: 8px;
+            display: flex;
             align-items: center;
-            gap: 5px; /* Space between the input and label */
+            gap: 5px;
         }
-        #hourInput, #closeHourInput {
-            width: 50px; /* Set the width of the input box to make it smaller */
-            padding: 1px;
-            font-size: 12px;
-        }
-        #hourInput, #openHourInput {
-            width: 50px; /* Set the width of the input box to make it smaller */
-            padding: 1px;
-            font-size: 12px;
+        input[type="text"] {
+            width: 45px;
+            padding: 2px;
+            font-size: 10px;
+            text-align: center;
         }
         h2 {
-            font-size: 10px;
+            font-size: 12px;
+            margin: 5px 0;
         }
         .counter-display {
-            font-size: 10px;
-            margin: 1px;
+            font-size: 12px;
+            margin: 4px 0;
         }
         button {
-            padding: 10px;
-            font-size: 14px; /* Adjust font size for symbols */
-            margin: 5px;
-            width: 40px; /* Adjust width for symbols */
+            padding: 6px;
+            font-size: 12px;
+            margin: 3px;
+            width: 35px;
+            height: 35px;
             cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid blue;
         }
         .copy-button {
             font-size: 12px;
-            padding: 5px 10px;
+            padding: 5px 15px;
             margin-top: 10px;
             cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid blue;
         }
     </style>
 </head>
@@ -76,7 +83,6 @@
     <label for="closeHourInput">:סגירת שער</label>
 </div>
 
-<!-- Counter sections -->
 <div class="counter-section">
     <h2>מספר נכנסים</h2>
     <div id="counter1" class="counter-display">מספר: 0</div>
@@ -112,12 +118,9 @@
     <button onclick="decrement(5)">−</button>
 </div>
 
-<!-- Copy button -->
 <button class="copy-button" onclick="copyData()">Copy</button>
 
-
 <script>
-    // Array to hold counts for each counter
     let counts = [0, 0, 0, 0, 0];
 
     function updateCounter(counterNumber) {
@@ -130,27 +133,17 @@
     }
 
     function decrement(counterNumber) {
-        // Only decrement if the count is greater than zero
         if (counts[counterNumber - 1] > 0) {
             counts[counterNumber - 1] -= 1;
             updateCounter(counterNumber);
         }
     }
 
-    // Function to copy data including title
     function copyData() {
         const title = document.getElementById('title').innerText;
         const openHour = document.getElementById('openHourInput').value;
         const closeHour = document.getElementById('closeHourInput').value;
-        const entrants = counts[0];
-        const exits = counts[1];
-        const vehicleEntrants = counts[2];
-        const vehicleExits = counts[3];
-        const forklifts = counts[4];
-
-        const data = `${title}\nשעת פתיחה: ${openHour}\nשעת סגירה: ${closeHour}\nמספר נכנסים: ${entrants}\nמספר יוצאים: ${exits}\nרכבים נכנסים: ${vehicleEntrants}\nרכבים יוצאים: ${vehicleExits}\nמלגזות: ${forklifts}`;
-
-        // Copy to clipboard
+        const data = `${title}\nשעת פתיחה: ${openHour}\nשעת סגירה: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמלגזות: ${counts[4]}`;
         navigator.clipboard.writeText(data).then(() => {
             alert("Data copied to clipboard!");
         }).catch(err => {
@@ -158,7 +151,6 @@
         });
     }
 </script>
-
 
 </body>
 </html>
