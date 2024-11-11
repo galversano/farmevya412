@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-People Counter</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .counter-section {
+            margin: 0; /* Remove space between counters */
+            text-align: center;
+        }
+        h1 {
+            font-size: 16px;
+            margin: 10;
+            margin-bottom: 5px;
+        }
+        .hour-section {
+            font-size: 12px;
+            margin-bottom: 10px;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px; /* Space between the input and label */
+        }
+        #hourInput, #closeHourInput {
+            width: 50px; /* Set the width of the input box to make it smaller */
+            padding: 1px;
+            font-size: 12px;
+        }
+        #hourInput, #openHourInput {
+            width: 50px; /* Set the width of the input box to make it smaller */
+            padding: 1px;
+            font-size: 12px;
+        }
+        h2 {
+            font-size: 10px;
+        }
+        .counter-display {
+            font-size: 10px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 14px; /* Adjust font size for symbols */
+            margin: 5px;
+            width: 40px; /* Adjust width for symbols */
+            cursor: pointer;
+        }
+        .copy-button {
+            font-size: 12px;
+            padding: 5px 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="title">חסם באקה 427</h1>
+
+<div class="hour-section">
+    <input type="text" id="openHourInput" placeholder="">
+    <label for="openHourInput">:פתיחת שער</label>
+</div>
+
+<div class="hour-section">
+    <input type="text" id="closeHourInput" placeholder="">
+    <label for="closeHourInput">:סגירת שער</label>
+</div>
+
+<!-- Counter sections -->
+<div class="counter-section">
+    <h2>מספר נכנסים</h2>
+    <div id="counter1" class="counter-display">מספר: 0</div>
+    <button onclick="increment(1)">+</button>
+    <button onclick="decrement(1)">−</button>
+</div>
+
+<div class="counter-section">
+    <h2>מספר יוצאים</h2>
+    <div id="counter2" class="counter-display">מספר: 0</div>
+    <button onclick="increment(2)">+</button>
+    <button onclick="decrement(2)">−</button>
+</div>
+
+<div class="counter-section">
+    <h2>רכבים נכנסים</h2>
+    <div id="counter3" class="counter-display">מספר: 0</div>
+    <button onclick="increment(3)">+</button>
+    <button onclick="decrement(3)">−</button>
+</div>
+
+<div class="counter-section">
+    <h2>רכבים יוצאים</h2>
+    <div id="counter4" class="counter-display">מספר: 0</div>
+    <button onclick="increment(4)">+</button>
+    <button onclick="decrement(4)">−</button>
+</div>
+
+<div class="counter-section">
+    <h2>מלגזות</h2>
+    <div id="counter5" class="counter-display">מספר: 0</div>
+    <button onclick="increment(5)">+</button>
+    <button onclick="decrement(5)">−</button>
+</div>
+
+<!-- Copy button -->
+<button class="copy-button" onclick="copyData()">Copy</button>
+
+
+<script>
+    // Array to hold counts for each counter
+    let counts = [0, 0, 0, 0, 0];
+
+    function updateCounter(counterNumber) {
+        document.getElementById(`counter${counterNumber}`).innerText = `מספר: ${counts[counterNumber - 1]}`;
+    }
+
+    function increment(counterNumber) {
+        counts[counterNumber - 1] += 1;
+        updateCounter(counterNumber);
+    }
+
+    function decrement(counterNumber) {
+        // Only decrement if the count is greater than zero
+        if (counts[counterNumber - 1] > 0) {
+            counts[counterNumber - 1] -= 1;
+            updateCounter(counterNumber);
+        }
+    }
+
+    // Function to copy data including title
+    function copyData() {
+        const title = document.getElementById('title').innerText;
+        const openHour = document.getElementById('openHourInput').value;
+        const closeHour = document.getElementById('closeHourInput').value;
+        const entrants = counts[0];
+        const exits = counts[1];
+        const vehicleEntrants = counts[2];
+        const vehicleExits = counts[3];
+        const forklifts = counts[4];
+
+        const data = `${title}\nשעת פתיחה: ${openHour}\nשעת סגירה: ${closeHour}\nמספר נכנסים: ${entrants}\nמספר יוצאים: ${exits}\nרכבים נכנסים: ${vehicleEntrants}\nרכבים יוצאים: ${vehicleExits}\nמלגזות: ${forklifts}`;
+
+        // Copy to clipboard
+        navigator.clipboard.writeText(data).then(() => {
+            alert("Data copied to clipboard!");
+        }).catch(err => {
+            alert("Failed to copy data: " + err);
+        });
+    }
+</script>
+
+
+</body>
+</html>
