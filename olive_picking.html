@@ -37,13 +37,20 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .counters-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 8px 0;
+            width: 90%;
+        }
         .counter-section {
             text-align: center;
-            margin: 8px 0;
             padding: 6px;
             border: 1px solid blue;
             border-radius: 3px;
-            width: 90%;
+            width: 45%;
+            box-sizing: border-box;
         }
         h2 {
             font-size: 10px;
@@ -100,32 +107,49 @@
 </div>
 <p id="date"></p>
 
-<div class="counter-section">
-    <h2>מעבר רגלי</h2>
-    <div id="counter1" class="counter-display">מספר: 0</div>
-    <button onclick="increment(1)">+</button>
-    <button onclick="decrement(1)">−</button>
+<div class="counters-row">
+    <div class="counter-section">
+        <h2>מסורבים (רגלי)</h2>
+        <div id="counter1" class="counter-display">מספר: 0</div>
+        <button onclick="increment(1)">+</button>
+        <button onclick="decrement(1)">−</button>
+    </div>
+    <div class="counter-section">
+        <h2>מעבר רגלי</h2>
+        <div id="counter2" class="counter-display">מספר: 0</div>
+        <button onclick="increment(2)">+</button>
+        <button onclick="decrement(2)">−</button>
+    </div>
 </div>
 
-<div class="counter-section">
-    <h2>חמורים</h2>
-    <div id="counter2" class="counter-display">מספר: 0</div>
-    <button onclick="increment(2)">+</button>
-    <button onclick="decrement(2)">−</button>
+<div class="counters-row">
+    <div class="counter-section">
+        <h2>מסורבים (חמורים)</h2>
+        <div id="counter3" class="counter-display">מספר: 0</div>
+        <button onclick="increment(3)">+</button>
+        <button onclick="decrement(3)">−</button>
+    </div>
+    <div class="counter-section">
+        <h2>חמורים</h2>
+        <div id="counter4" class="counter-display">מספר: 0</div>
+        <button onclick="increment(4)">+</button>
+        <button onclick="decrement(4)">−</button>
+    </div>
 </div>
 
-<div class="counter-section">
-    <h2>מסורבים</h2>
-    <div id="counter3" class="counter-display">מספר: 0</div>
-    <button onclick="increment(3)">+</button>
-    <button onclick="decrement(3)">−</button>
-</div>
-
-<div class="counter-section">
-    <h2>טרקטורים</h2>
-    <div id="counter4" class="counter-display">מספר: 0</div>
-    <button onclick="increment(4)">+</button>
-    <button onclick="decrement(4)">−</button>
+<div class="counters-row">
+    <div class="counter-section">
+        <h2>מסורבים (טרקטורים)</h2>
+        <div id="counter5" class="counter-display">מספר: 0</div>
+        <button onclick="increment(5)">+</button>
+        <button onclick="decrement(5)">−</button>
+    </div>
+    <div class="counter-section">
+        <h2>טרקטורים</h2>
+        <div id="counter6" class="counter-display">מספר: 0</div>
+        <button onclick="increment(6)">+</button>
+        <button onclick="decrement(6)">−</button>
+    </div>
 </div>
 
 <div class="control-buttons">
@@ -145,7 +169,7 @@
 
     const currentDate = displayCurrentDate(); // Store the displayed date
 
-    let counters = [0, 0, 0, 0];
+    let counters = [0, 0, 0, 0, 0, 0];
 
     function updateCounter(counterNumber) {
         document.getElementById(`counter${counterNumber}`).innerText = `מספר: ${counters[counterNumber - 1]}`;
@@ -174,16 +198,25 @@
     }
 
     function copyData() {
-        const titleText = `**${document.getElementById("title-prefix").innerText}**`;
-        const entryExitText = `**${document.getElementById("entry-exit-select").value}**`; // Include entry/exit status
-        const date = `תאריך: ${currentDate}`;
-        const data = `${titleText} - ${entryExitText}\n${date}\n\nמעבר רגלי: ${counters[0]}\nחמורים: ${counters[1]}\nמסורבים: ${counters[2]}\nטרקטורים: ${counters[3]}`;
-        
-        navigator.clipboard.writeText(data).then(() => {
-            alert("Data copied to clipboard!");
-        }).catch(err => {
-            alert("Failed to copy data: " + err);
-        });
+    const titleText = `**${document.getElementById("title-prefix").innerText}**`;
+    const entryExitText = `**${document.getElementById("entry-exit-select").value}**`;
+    const date = `תאריך: ${currentDate}`;
+    
+    // Create table-like structure for counters with bold headers
+    const data = `${titleText}\t${entryExitText}\t${date}\n\n` +
+                 `**סוג**\t\t**כמות**\n` +
+                 `מעבר רגלי\t${counters[1]}\n` +
+                 `מסורבים (רגלי)\t${counters[0]}\n`+
+                 `חמורים\t\t${counters[3]}\n` +
+                 `מסורבים (חמורים)\t${counters[2]}\n` +
+                 `טרקטורים\t${counters[5]}\n`+
+                 `מסורבים (טרקטורים)\t${counters[4]}\n`;
+    
+    navigator.clipboard.writeText(data).then(() => {
+        alert("Data copied to clipboard!");
+    }).catch(err => {
+        alert("Failed to copy data: " + err);
+    });
     }
 
     function goHome() {
