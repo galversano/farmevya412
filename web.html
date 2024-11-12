@@ -32,14 +32,14 @@
         #date {
             font-size: 9px;
         }
-        .hour-section {
+        .hour-section, .commander-section, .notes-section {
             font-size: 10px;
             margin-bottom: 6px;
             display: flex;
             align-items: center;
             gap: 4px;
         }
-        select, label {
+        select, label, input {
             font-size: 10px;
         }
         h2 {
@@ -78,6 +78,11 @@
 
 <h1 id="title">חסם באקה 427</h1>
 <p id="date"></p>
+
+<div class="commander-section">
+    <input type="text" id="commanderInput" placeholder="הכנס שם">
+    <label for="commanderInput">:שם המפקד</label>
+</div>
 
 <div class="hour-section">
     <select id="openHourSelect">
@@ -132,6 +137,11 @@
     <button onclick="decrement(4)">−</button>
 </div>
 
+<div class="notes-section">
+    <input type="text" id="notesInput" placeholder="הכנס הערות">
+    <label for="notesInput">:הערות</label>
+</div>
+
 <div class="control-buttons">
     <button class="control-button" onclick="copyData()">העתק</button>
     <button class="control-button" onclick="goHome()">חזור</button>
@@ -170,9 +180,11 @@
     function copyData() {
         const title = `**${document.getElementById('title').innerText}**`; // Make title bold in copied text
         const date = `תאריך: ${currentDate}`;
+        const commanderName = document.getElementById('commanderInput').value || "לא צויין"; // Default if no name
         const openHour = document.getElementById('openHourSelect').value;
         const closeHour = document.getElementById('closeHourInput').value;
-        const data = `${title}\n${date}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמסורבים: ${counts[4]}`;
+        const notes = document.getElementById('notesInput').value || "אין הערות"; // Default if no notes
+        const data = `${title}\n${date}\nשם המפקד: ${commanderName}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמסורבים: ${counts[4]}\nהערות: ${notes}`;
         
         navigator.clipboard.writeText(data).then(() => {
             alert("הועתק");
