@@ -133,8 +133,8 @@
 </div>
 
 <div class="control-buttons">
-    <button class="control-button" onclick="copyData()">Copy</button>
-    <button class="control-button" onclick="goHome()">Back</button>
+    <button class="control-button" onclick="copyData()">העתק</button>
+    <button class="control-button" onclick="goHome()">חזור</button>
 </div>
 
 <script>
@@ -175,7 +175,7 @@
         const data = `${title}\n${date}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמסורבים: ${counts[4]}`;
         
         navigator.clipboard.writeText(data).then(() => {
-            alert("Data copied to clipboard!");
+            alert("הועתק");
         }).catch(err => {
             alert("Failed to copy data: " + err);
         });
