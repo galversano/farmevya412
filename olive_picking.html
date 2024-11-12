@@ -24,10 +24,10 @@
             margin: 10px 0;
             text-align: center;
         }
-        #title-prefix {
+        #title-prefix, #entry-exit-prefix {
             font-size: 14px;
         }
-        #title-select {
+        #title-select, #entry-exit-select {
             font-size: 14px;
             padding: 2px;
             margin-left: 5px;
@@ -90,6 +90,14 @@
         <option value="ח עכבה">שער ח עכבה</option>
     </select>
 </div>
+
+<div class="title-section">
+    <span id="entry-exit-prefix">כניסה/יציאה:</span>
+    <select id="entry-exit-select" onchange="updateEntryExit()">
+        <option value="כניסה">כניסה</option>
+        <option value="יציאה">יציאה</option>
+    </select>
+</div>
 <p id="date"></p>
 
 <div class="counter-section">
@@ -132,7 +140,7 @@
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
         const formattedDate = today.toLocaleDateString('en-IL', options);
         document.getElementById('date').innerText = `תאריך: ${formattedDate}`;
-        return formattedDate;
+        return formattedDate; // Return the date to use in the copyData function
     }
 
     const currentDate = displayCurrentDate(); // Store the displayed date
@@ -160,10 +168,16 @@
         document.getElementById("title-prefix").innerText = `שער ${selectedValue}`;
     }
 
+    function updateEntryExit() {
+        const selectedValue = document.getElementById("entry-exit-select").value;
+        document.getElementById("entry-exit-prefix").innerText = `כניסה/יציאה: ${selectedValue}`;
+    }
+
     function copyData() {
         const titleText = `**${document.getElementById("title-prefix").innerText}**`;
+        const entryExitText = `**${document.getElementById("entry-exit-select").value}**`; // Include entry/exit status
         const date = `תאריך: ${currentDate}`;
-        const data = `${titleText}\n${date}\n\nמעבר רגלי: ${counters[0]}\nחמורים: ${counters[1]}\nמסורבים: ${counters[2]}\nטרקטורים: ${counters[3]}`;
+        const data = `${titleText} - ${entryExitText}\n${date}\n\nמעבר רגלי: ${counters[0]}\nחמורים: ${counters[1]}\nמסורבים: ${counters[2]}\nטרקטורים: ${counters[3]}`;
         
         navigator.clipboard.writeText(data).then(() => {
             alert("Data copied to clipboard!");
