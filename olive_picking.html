@@ -172,8 +172,8 @@
 </div>
 
 <div class="control-buttons">
-    <button class="control-button" onclick="copyData()">Copy</button>
-    <button class="control-button" onclick="goHome()">Back</button>
+    <button class="control-button" onclick="copyData()">העתק</button>
+    <button class="control-button" onclick="goHome()">חזור</button>
 </div>
 
 <script>
@@ -227,16 +227,16 @@
         // Constructing the structured data without headers
         const data = `${titleText}\n${entryExitText}\n${date}\nשם המפקד: ${commanderName}\n` +
                      `שעת התחלה: ${startTime}\nשעת סיום: ${endTime}\n\n` +
-                     `מעבר רגלי\t\t${counters[1]}\n` +
-                     `מסורבים (רגלי)\t\t${counters[0]}\n` +
-                     `חמורים\t\t\t${counters[3]}\n` +
-                     `מסורבים (חמורים)\t\t${counters[2]}\n` +
-                     `טרקטורים\t\t${counters[5]}\n` +
-                     `מסורבים (טרקטורים)\t${counters[4]}`;
+                     `מעבר רגלי:\t\t${counters[1]}\n` +
+                     `מסורבים (רגלי):\t\t${counters[0]}\n` +
+                     `חמורים:\t\t\t${counters[3]}\n` +
+                     `מסורבים (חמורים):\t\t${counters[2]}\n` +
+                     `טרקטורים:\t\t${counters[5]}\n` +
+                     `מסורבים (טרקטורים):\t${counters[4]}`;
 
         // Copy the structured data to the clipboard
         navigator.clipboard.writeText(data).then(() => {
-            alert("Data copied to clipboard!");
+            alert("הועתק");
         }).catch(err => {
             alert("Failed to copy data: " + err);
         });
