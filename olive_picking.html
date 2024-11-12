@@ -39,7 +39,7 @@
             margin-top: 5px;
         }
         .time-section input[type="text"] {
-            width: 50px; /* Smaller width for phone screens */
+            width: 50px;
             font-size: 12px;
             padding: 2px;
             text-align: center;
@@ -98,36 +98,49 @@
             text-align: center;
             width: 100px;
         }
+        .notes-section {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .notes-section input[type="text"] {
+            width: 120px;
+            font-size: 12px;
+            padding: 2px;
+            text-align: center;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
 
 <div class="title-section">
-        <select id="title-select" onchange="updateTitle()">
-            <option value="זיתא">שער זיתא</option>
-            <option value="ח עכבה">שער ח עכבה</option>
-        </select>
-        <span id="title-prefix">:שער</span>
+    <select id="title-select" onchange="updateTitle()">
+        <option value="זיתא">שער זיתא</option>
+        <option value="ח עכבה">שער ח עכבה</option>
+    </select>
+    <span id="title-prefix">:שער</span>
 </div>
     
 <div class="title-section">
-        <select id="entry-exit-select" onchange="updateEntryExit()">
-            <option value="כניסה">כניסה</option>
-            <option value="יציאה">יציאה</option>
-        </select>
-        <span id="entry-exit-prefix">:כניסה/יציאה</span>
+    <select id="entry-exit-select" onchange="updateEntryExit()">
+        <option value="כניסה">כניסה</option>
+        <option value="יציאה">יציאה</option>
+    </select>
+    <span id="entry-exit-prefix">:כניסה/יציאה</span>
 </div>
     
 <div class="title-section">
-        <input type="text" id="commander-input" placeholder="הכנס שם">
-        <label id="commander-label" for="commander-input">:שם המפקד</label>
+    <input type="text" id="commander-input" placeholder="הכנס שם">
+    <label id="commander-label" for="commander-input">:שם המפקד</label>
 </div>
     
 <div class="time-section">
-        <input type="text" id="start-time" placeholder="התחלה">
-        <label for="start-time">:שעת התחלה</label>
-        <input type="text" id="end-time" placeholder="סיום">
-        <label for="end-time">:שעת סיום</label>
+    <input type="text" id="start-time" placeholder="התחלה">
+    <label for="start-time">:שעת התחלה</label>
+    <input type="text" id="end-time" placeholder="סיום">
+    <label for="end-time">:שעת סיום</label>
 </div>
     
 <p id="date"></p>
@@ -177,22 +190,27 @@
     </div>
 </div>
 
+<div class="notes-section">
+    <input type="text" id="notes-input" placeholder="הכנס הערות">
+    <label for="notes-input">:הערות</label>
+</div>
+
 <div class="control-buttons">
     <button class="control-button" onclick="copyData()">העתק</button>
     <button class="control-button" onclick="goHome()">חזור</button>
 </div>
 
 <script>
-    // Display the current date
+    // Add current date
     function displayCurrentDate() {
         const today = new Date();
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
         const formattedDate = today.toLocaleDateString('en-IL', options);
         document.getElementById('date').innerText = `תאריך: ${formattedDate}`;
-        return formattedDate; // Return the date to use in the copyData function
+        return formattedDate;
     }
 
-    const currentDate = displayCurrentDate(); // Store the displayed date
+    const currentDate = displayCurrentDate();
 
     let counters = [0, 0, 0, 0, 0, 0];
 
@@ -228,9 +246,10 @@
         const commanderName = document.getElementById("commander-input").value || "לא צויין"; // Commander name or default text
         const startTime = document.getElementById("start-time").value || "לא צויין"; // Start time or default text
         const endTime = document.getElementById("end-time").value || "לא צויין"; // End time or default text
+        const notes = document.getElementById("notes-input").value || "אין הערות"; // Default if no notes
         const date = `תאריך: ${currentDate}`; // Current date
 
-        // Constructing the structured data without headers
+        // Constructing the structured data
         const data = `${titleText}\n${entryExitText}\n${date}\nשם המפקד: ${commanderName}\n` +
                      `שעת התחלה: ${startTime}\nשעת סיום: ${endTime}\n\n` +
                      `מעבר רגלי:\t\t${counters[1]}\n` +
@@ -238,7 +257,8 @@
                      `חמורים:\t\t\t${counters[3]}\n` +
                      `מסורבים (חמורים):\t\t${counters[2]}\n` +
                      `טרקטורים:\t\t${counters[5]}\n` +
-                     `מסורבים (טרקטורים):\t${counters[4]}`;
+                     `מסורבים (טרקטורים):\t${counters[4]}\n` +
+                     `הערות: ${notes}`;
 
         // Copy the structured data to the clipboard
         navigator.clipboard.writeText(data).then(() => {
