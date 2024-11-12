@@ -163,6 +163,7 @@
 
 <div class="control-buttons">
     <button class="control-button" onclick="copyData()">העתק</button>
+    <button class="control-button" onclick="sendWhatsApp()">ווצאפ דורין</button>
     <button class="control-button" onclick="goHome()">חזור</button>
 </div>
 
@@ -212,6 +213,20 @@
         }).catch(err => {
             alert("Failed to copy data: " + err);
         });
+    }
+
+    function sendWhatsApp() {
+        const title = `**${document.getElementById('title').innerText}**`;
+        const date = `תאריך: ${currentDate}`;
+        const commanderName = document.getElementById('commanderInput').value || "לא צויין";
+        const openHour = document.getElementById('openHourSelect').value;
+        const closeHour = document.getElementById('closeHourInput').value;
+        const notes = document.getElementById('notesInput').value || "אין הערות";
+        const message = `${title}\n${date}\nשם המפקד: ${commanderName}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counters[0]}\nמספר יוצאים: ${counters[1]}\nרכבים נכנסים: ${counters[2]}\nרכבים יוצאים: ${counters[3]}\nמסורבים: ${counters[4]}\nהערות: ${notes}`;
+
+        const phoneNumber = "9725000000"; // WhatsApp number to send to
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, "_blank");
     }
 
     function goHome() {
