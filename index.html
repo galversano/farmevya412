@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-People Counter</title>
+    <title>Counter Selection</title>
     <style>
         body {
             display: flex;
@@ -16,162 +16,33 @@
             padding: 0;
             box-sizing: border-box;
         }
-        .counter-section {
-            margin: 2px 0;
-            text-align: center;
-            padding: 3px;
-            border: 1px solid blue;
-            border-radius: 3px;
-            width: 85%;
-        }
         h1 {
-            font-size: 10px;
-            margin: 5px;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
-        #date {
-            font-size: 9px;
-        }
-        .hour-section {
-            font-size: 8px;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 2px;
-        }
-        input[type="text"] {
-            width: 35px;
-            padding: 1px;
-            font-size: 8px;
+        .button {
+            font-size: 14px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid blue;
+            background-color: lightblue;
+            width: 150px;
             text-align: center;
-        }
-        h2 {
-            font-size: 8px;
-            margin: 2px 0;
-        }
-        .counter-display {
-            font-size: 8px;
-            margin: 2px 0;
-        }
-        button {
-            padding: 3px;
-            font-size: 8px;
-            margin: 2px;
-            width: 40px;
-            height: 24px;
-            cursor: pointer;
-            border-radius: 3px;
-            border: 1px solid blue;
-        }
-        .copy-button {
-            font-size: 8px;
-            padding: 3px 8px;
-            margin-top: 6px;
-            cursor: pointer;
-            border-radius: 3px;
-            border: 1px solid blue;
         }
     </style>
 </head>
 <body>
 
-<h1 id="title">חסם באקה 427</h1>
-<p id="date"></p>
+<h1>Select a Counter</h1>
 
-<div class="hour-section">
-    <input type="text" id="openHourInput" placeholder="">
-    <label for="openHourInput">:פתיחת שער</label>
-</div>
-
-<div class="hour-section">
-    <input type="text" id="closeHourInput" placeholder="">
-    <label for="closeHourInput">:סגירת שער</label>
-</div>
-
-<div class="counter-section">
-    <h2>מספר נכנסים</h2>
-    <div id="counter1" class="counter-display">מספר: 0</div>
-    <button onclick="increment(1)">+</button>
-    <button onclick="decrement(1)">−</button>
-</div>
-
-<div class="counter-section">
-    <h2>מספר יוצאים</h2>
-    <div id="counter2" class="counter-display">מספר: 0</div>
-    <button onclick="increment(2)">+</button>
-    <button onclick="decrement(2)">−</button>
-</div>
-
-<div class="counter-section">
-    <h2>מסורבים</h2>
-    <div id="counter5" class="counter-display">מספר: 0</div>
-    <button onclick="increment(5)">+</button>
-    <button onclick="decrement(5)">−</button>
-</div>
-
-<div class="counter-section">
-    <h2>רכבים נכנסים</h2>
-    <div id="counter3" class="counter-display">מספר: 0</div>
-    <button onclick="increment(3)">+</button>
-    <button onclick="decrement(3)">−</button>
-</div>
-
-<div class="counter-section">
-    <h2>רכבים יוצאים</h2>
-    <div id="counter4" class="counter-display">מספר: 0</div>
-    <button onclick="increment(4)">+</button>
-    <button onclick="decrement(4)">−</button>
-</div>
-
-<div class="counter-section">
-    <h2>מלגזות</h2>
-    <div id="counter5" class="counter-display">מספר: 0</div>
-    <button onclick="increment(5)">+</button>
-    <button onclick="decrement(5)">−</button>
-</div>
-
-<button class="copy-button" onclick="copyData()">Copy</button>
+<div class="button" onclick="navigateTo('web.html')">חסם באקה 427</div>
+<div class="button" onclick="navigateTo('olive_picking.html')">שער זיתא/ שער ח עכבה</div>
 
 <script>
-    // Add current date
-    function displayCurrentDate() {
-        const today = new Date();
-        const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-        const formattedDate = today.toLocaleDateString('en-IL', options);
-        document.getElementById('date').innerText = `תאריך: ${formattedDate}`;
-        return formattedDate;
-    }
-
-    const currentDate = displayCurrentDate();
-
-    let counts = [0, 0, 0, 0, 0];
-
-    function updateCounter(counterNumber) {
-        document.getElementById(`counter${counterNumber}`).innerText = `מספר: ${counts[counterNumber - 1]}`;
-    }
-
-    function increment(counterNumber) {
-        counts[counterNumber - 1] += 1;
-        updateCounter(counterNumber);
-    }
-
-    function decrement(counterNumber) {
-        if (counts[counterNumber - 1] > 0) {
-            counts[counterNumber - 1] -= 1;
-            updateCounter(counterNumber);
-        }
-    }
-
-    function copyData() {
-        const title = document.getElementById('title').innerText;
-        const date = `תאריך: ${currentDate}`;
-        const openHour = document.getElementById('openHourInput').value;
-        const closeHour = document.getElementById('closeHourInput').value;
-        const data = `${title}\n${date}\nשעת פתיחה: ${openHour}\nשעת סגירה: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמלגזות: ${counts[4]}`;
-        navigator.clipboard.writeText(data).then(() => {
-            alert("Data copied to clipboard!");
-        }).catch(err => {
-            alert("Failed to copy data: " + err);
-        });
+    function navigateTo(page) {
+        window.location.href = page;
     }
 </script>
 
