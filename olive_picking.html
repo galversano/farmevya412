@@ -16,10 +16,24 @@
             padding: 0;
             box-sizing: border-box;
         }
-        h1 {
+        .title-section {
+            display: flex;
+            align-items: center;
             font-size: 14px;
+            font-weight: bold; /* Make title bold */
             margin: 10px 0;
             text-align: center;
+        }
+        #title-prefix {
+            font-size: 14px;
+        }
+        #title-input {
+            width: 80px;
+            padding: 2px;
+            font-size: 14px;
+            text-align: center;
+            border: none;
+            border-bottom: 1px solid black;
         }
         #date {
             font-size: 10px;
@@ -55,7 +69,6 @@
         .control-buttons {
             display: flex;
             gap: 5px; /* Reduced gap between buttons */
-            width: 90%;
             margin-top: 20px;
             justify-content: center;
         }
@@ -73,7 +86,10 @@
 </head>
 <body>
 
-<h1 id="title">שער זיתא/שער ח עכבה</h1>
+<div class="title-section">
+    <span id="title-prefix">שער:</span>
+    <input type="text" id="title-input" placeholder="הזן כאן" oninput="updateTitle()" />
+</div>
 <p id="date"></p>
 
 <div class="counter-section">
@@ -108,6 +124,7 @@
     <button class="control-button" onclick="copyData()">Copy</button>
     <button class="control-button" onclick="goHome()">Back</button>
 </div>
+
 <script>
     // Display the current date
     function displayCurrentDate() {
@@ -138,10 +155,15 @@
         }
     }
 
+    function updateTitle() {
+        const titleInput = document.getElementById("title-input").value;
+        document.getElementById("title-prefix").innerText = `שער: ${titleInput}`;
+    }
+
     function copyData() {
-        const title = `**${document.getElementById('title').innerText}**`; // Make title bold using Markdown
+        const titleText = `**${document.getElementById("title-prefix").innerText}**`; // Make title bold in copied text
         const date = `תאריך: ${currentDate}`;
-        const data = `${title}\n${date}\n\nמעבר רגלי: ${counters[0]}\nחמורים: ${counters[1]}\nמסורבים: ${counters[2]}\nטרקטורים: ${counters[3]}`;
+        const data = `${titleText}\n${date}\n\nמעבר רגלי: ${counters[0]}\nחמורים: ${counters[1]}\nמסורבים: ${counters[2]}\nטרקטורים: ${counters[3]}`;
         
         navigator.clipboard.writeText(data).then(() => {
             alert("Data copied to clipboard!");
