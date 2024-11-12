@@ -25,24 +25,22 @@
             width: 85%;
         }
         h1 {
-            font-size: 10px;
+            font-size: 12px;
+            font-weight: bold;
             margin: 5px;
         }
         #date {
             font-size: 9px;
         }
         .hour-section {
-            font-size: 8px;
-            margin-bottom: 4px;
+            font-size: 10px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
         }
-        input[type="text"] {
-            width: 35px;
-            padding: 1px;
-            font-size: 8px;
-            text-align: center;
+        select, label {
+            font-size: 10px;
         }
         h2 {
             font-size: 8px;
@@ -82,13 +80,21 @@
 <p id="date"></p>
 
 <div class="hour-section">
-    <input type="text" id="openHourInput" placeholder="">
-    <label for="openHourInput">:פתיחת שער</label>
+    <select id="openHourSelect">
+        <option value="8:00">8:00</option>
+        <option value="12:00">12:00</option>
+        <option value="16:00">16:00</option>
+    </select>
+    <label for="openHourSelect">פתיחת שער:</label>
 </div>
 
 <div class="hour-section">
-    <input type="text" id="closeHourInput" placeholder="">
-    <label for="closeHourInput">:סגירת שער</label>
+    <select id="closeHourInput">
+        <option value="8:30">8:30</option>
+        <option value="12:30">12:30</option>
+        <option value="16:30">16:30</option>
+    </select>
+    <label for="closeHourInput">סגירת שער:</label>
 </div>
 
 <div class="counter-section">
@@ -162,11 +168,12 @@
     }
 
     function copyData() {
-        const title = document.getElementById('title').innerText;
+        const title = `**${document.getElementById('title').innerText}**`; // Make title bold in copied text
         const date = `תאריך: ${currentDate}`;
-        const openHour = document.getElementById('openHourInput').value;
+        const openHour = document.getElementById('openHourSelect').value;
         const closeHour = document.getElementById('closeHourInput').value;
-        const data = `${title}\n${date}\nשעת פתיחה: ${openHour}\nשעת סגירה: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמסורבים: ${counts[4]}`;
+        const data = `${title}\n${date}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמסורבים: ${counts[4]}`;
+        
         navigator.clipboard.writeText(data).then(() => {
             alert("Data copied to clipboard!");
         }).catch(err => {
