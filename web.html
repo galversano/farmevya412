@@ -46,6 +46,15 @@
             font-size: 8px;
             margin: 2px 0;
         }
+        .counter-input {
+            width: 30px;
+            text-align: center;
+            font-size: 10px;
+            padding: 4px;
+            margin-bottom: 5px; /* Space between input and buttons */
+            border: 1px solid blue;
+            border-radius: 3px;
+        }
         .counter-display {
             font-size: 8px;
             margin: 2px 0;
@@ -101,41 +110,51 @@
     </select>
     <label for="closeHourInput">סגירת שער:</label>
 </div>
-
 <div class="counter-section">
     <h2>מספר נכנסים</h2>
-    <div id="counter1" class="counter-display">מספר: 0</div>
-    <button onclick="increment(1)">+</button>
-    <button onclick="decrement(1)">−</button>
+    <input type="number" id="counter1" class="counter-input" value="0" onchange="updateCounterFromInput(1)">
+    <div class="button-container">
+        <button onclick="increment(1)">+</button>
+        <button onclick="decrement(1)">−</button>
+    </div>
 </div>
 
 <div class="counter-section">
     <h2>מספר יוצאים</h2>
-    <div id="counter2" class="counter-display">מספר: 0</div>
-    <button onclick="increment(2)">+</button>
-    <button onclick="decrement(2)">−</button>
+    <input type="number" id="counter2" class="counter-input" value="0" onchange="updateCounterFromInput(2)">
+    <div class="button-container">
+        <button onclick="increment(2)">+</button>
+        <button onclick="decrement(2)">−</button>
+    </div>
 </div>
 
 <div class="counter-section">
     <h2>מסורבים</h2>
-    <div id="counter5" class="counter-display">מספר: 0</div>
-    <button onclick="increment(5)">+</button>
-    <button onclick="decrement(5)">−</button>
+    <input type="number" id="counter5" class="counter-input" value="0" onchange="updateCounterFromInput(5)">
+    <div class="button-container">
+        <button onclick="increment(5)">+</button>
+        <button onclick="decrement(5)">−</button>
+    </div>
 </div>
 
 <div class="counter-section">
     <h2>רכבים נכנסים</h2>
-    <div id="counter3" class="counter-display">מספר: 0</div>
-    <button onclick="increment(3)">+</button>
-    <button onclick="decrement(3)">−</button>
+    <input type="number" id="counter3" class="counter-input" value="0" onchange="updateCounterFromInput(3)">
+    <div class="button-container">
+        <button onclick="increment(3)">+</button>
+        <button onclick="decrement(3)">−</button>
+    </div>
 </div>
 
 <div class="counter-section">
     <h2>רכבים יוצאים</h2>
-    <div id="counter4" class="counter-display">מספר: 0</div>
-    <button onclick="increment(4)">+</button>
-    <button onclick="decrement(4)">−</button>
+    <input type="number" id="counter4" class="counter-input" value="0" onchange="updateCounterFromInput(4)">
+    <div class="button-container">
+        <button onclick="increment(4)">+</button>
+        <button onclick="decrement(4)">−</button>
+    </div>
 </div>
+
 
 <div class="notes-section">
     <input type="text" id="notesInput" placeholder="הכנס הערות">
@@ -159,23 +178,25 @@
 
     const currentDate = displayCurrentDate();
 
-    let counts = [0, 0, 0, 0, 0];
+    let counters = [0, 0, 0, 0, 0]; // Array to store counter values
 
-    function updateCounter(counterNumber) {
-        document.getElementById(`counter${counterNumber}`).innerText = `מספר: ${counts[counterNumber - 1]}`;
+    function updateCounterFromInput(counterNumber) {
+        const inputValue = parseInt(document.getElementById(`counter${counterNumber}`).value, 10);
+        counters[counterNumber - 1] = isNaN(inputValue) ? 0 : inputValue;
     }
 
     function increment(counterNumber) {
-        counts[counterNumber - 1] += 1;
-        updateCounter(counterNumber);
+        counters[counterNumber - 1] += 1;
+        document.getElementById(`counter${counterNumber}`).value = counters[counterNumber - 1];
     }
 
     function decrement(counterNumber) {
-        if (counts[counterNumber - 1] > 0) {
-            counts[counterNumber - 1] -= 1;
-            updateCounter(counterNumber);
+        if (counters[counterNumber - 1] > 0) {
+            counters[counterNumber - 1] -= 1;
+            document.getElementById(`counter${counterNumber}`).value = counters[counterNumber - 1];
         }
     }
+
 
     function copyData() {
         const title = `**${document.getElementById('title').innerText}**`; // Make title bold in copied text
