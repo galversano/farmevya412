@@ -20,20 +20,17 @@
             display: flex;
             align-items: center;
             font-size: 14px;
-            font-weight: bold; /* Make title bold */
+            font-weight: bold;
             margin: 10px 0;
             text-align: center;
         }
         #title-prefix {
             font-size: 14px;
         }
-        #title-input {
-            width: 80px;
-            padding: 2px;
+        #title-select {
             font-size: 14px;
-            text-align: center;
-            border: none;
-            border-bottom: 1px solid black;
+            padding: 2px;
+            margin-left: 5px;
         }
         #date {
             font-size: 10px;
@@ -68,7 +65,7 @@
         }
         .control-buttons {
             display: flex;
-            gap: 5px; /* Reduced gap between buttons */
+            gap: 5px;
             margin-top: 20px;
             justify-content: center;
         }
@@ -88,7 +85,10 @@
 
 <div class="title-section">
     <span id="title-prefix">שער:</span>
-    <input type="text" id="title-input" placeholder="הזן כאן" oninput="updateTitle()" />
+    <select id="title-select" onchange="updateTitle()">
+        <option value="זיתא">שער זיתא</option>
+        <option value="ח עכבה">שער ח עכבה</option>
+    </select>
 </div>
 <p id="date"></p>
 
@@ -132,7 +132,7 @@
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
         const formattedDate = today.toLocaleDateString('en-IL', options);
         document.getElementById('date').innerText = `תאריך: ${formattedDate}`;
-        return formattedDate; // Return the date to use in the copyData function
+        return formattedDate;
     }
 
     const currentDate = displayCurrentDate(); // Store the displayed date
@@ -156,12 +156,12 @@
     }
 
     function updateTitle() {
-        const titleInput = document.getElementById("title-input").value;
-        document.getElementById("title-prefix").innerText = `שער: ${titleInput}`;
+        const selectedValue = document.getElementById("title-select").value;
+        document.getElementById("title-prefix").innerText = `שער ${selectedValue}`;
     }
 
     function copyData() {
-        const titleText = `**${document.getElementById("title-prefix").innerText}**`; // Make title bold in copied text
+        const titleText = `**${document.getElementById("title-prefix").innerText}**`;
         const date = `תאריך: ${currentDate}`;
         const data = `${titleText}\n${date}\n\nמעבר רגלי: ${counters[0]}\nחמורים: ${counters[1]}\nמסורבים: ${counters[2]}\nטרקטורים: ${counters[3]}`;
         
