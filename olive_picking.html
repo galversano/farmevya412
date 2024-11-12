@@ -4,115 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olive Picking Counter</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .title-section {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            font-weight: bold;
-            margin: 10px 0;
-            text-align: center;
-        }
-        #title-prefix, #entry-exit-prefix, #commander-label {
-            font-size: 14px;
-        }
-        #title-select, #entry-exit-select, #commander-input {
-            font-size: 14px;
-            padding: 2px;
-            margin-left: 5px;
-        }
-        .time-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 5px;
-        }
-        .time-section input[type="text"] {
-            width: 50px;
-            font-size: 12px;
-            padding: 2px;
-            text-align: center;
-        }
-        #date {
-            font-size: 10px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .counters-row {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 8px 0;
-            width: 90%;
-        }
-        .counter-section {
-            text-align: center;
-            padding: 6px;
-            border: 1px solid blue;
-            border-radius: 3px;
-            width: 45%;
-            box-sizing: border-box;
-        }
-        h2 {
-            font-size: 10px;
-            margin: 5px 0;
-        }
-        .counter-display {
-            font-size: 10px;
-            margin: 3px 0;
-        }
-        button {
-            padding: 2px;
-            font-size: 10px;
-            margin: 3px;
-            width: 35px;
-            height: 24px;
-            cursor: pointer;
-            border-radius: 3px;
-            border: 1px solid blue;
-        }
-        .control-buttons {
-            display: flex;
-            gap: 5px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-        .control-button {
-            padding: 2px 10px;
-            font-size: 12px;
-            cursor: pointer;
-            background-color: lightgray;
-            border-radius: 5px;
-            border: 1px solid gray;
-            text-align: center;
-            width: 100px;
-        }
-        .notes-section {
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-        .notes-section input[type="text"] {
-            width: 120px;
-            font-size: 12px;
-            padding: 2px;
-            text-align: center;
-            margin-left: 5px;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Olive Picking Counter</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                height: 100vh;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .title-section {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 10px 0;
+                text-align: center;
+            }
+            #title-prefix, #entry-exit-prefix, #commander-label {
+                font-size: 14px;
+            }
+            #title-select, #entry-exit-select, #commander-input {
+                font-size: 14px;
+                padding: 2px;
+                margin-left: 5px;
+            }
+            .time-section {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 5px;
+            }
+            .time-section input[type="text"] {
+                width: 50px;
+                font-size: 12px;
+                padding: 2px;
+                text-align: center;
+            }
+            #date {
+                font-size: 10px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .counters-row {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin: 8px 0;
+                width: 90%;
+            }
+            .counter-section {
+                text-align: center;
+                padding: 6px;
+                border: 1px solid blue;
+                border-radius: 3px;
+                width: 45%;
+                box-sizing: border-box;
+            }
+            h2 {
+                font-size: 10px;
+                margin: 5px 0;
+            }
+            .counter-display {
+                font-size: 10px;
+                margin: 3px 0;
+            }
+            button {
+                padding: 2px;
+                font-size: 10px;
+                margin: 0px;
+                width: 40px;
+                height: 24px;
+                cursor: pointer;
+                border-radius: 3px;
+                border: 1px solid blue;
+            }
+            .control-buttons {
+                display: flex;
+                gap: 5px;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            .control-button {
+                padding: 2px 10px;
+                font-size: 12px;
+                cursor: pointer;
+                background-color: lightgray;
+                border-radius: 5px;
+                border: 1px solid gray;
+                text-align: center;
+                width: 100px;
+            }
+            .notes-section {
+                display: flex;
+                align-items: center;
+                font-size: 12px;
+                margin-top: 10px;
+            }
+            .notes-section input[type="text"] {
+                width: 120px;
+                font-size: 12px;
+                padding: 2px;
+                text-align: center;
+                margin-left: 5px;
+            }
+        </style>
+    </head>
 <body>
 
 <div class="title-section">
@@ -135,14 +139,7 @@
     <input type="text" id="commander-input" placeholder="הכנס שם">
     <label id="commander-label" for="commander-input">:שם המפקד</label>
 </div>
-    
-<div class="time-section">
-    <input type="text" id="start-time" placeholder="התחלה">
-    <label for="start-time">:שעת התחלה</label>
-    <input type="text" id="end-time" placeholder="סיום">
-    <label for="end-time">:שעת סיום</label>
-</div>
-    
+
 <p id="date"></p>
 
 <div class="counters-row">
@@ -197,11 +194,11 @@
 
 <div class="control-buttons">
     <button class="control-button" onclick="copyData()">העתק</button>
+    <button class="control-button" onclick="sendWhatsApp()">שלח ווצאפ חמל</button>
     <button class="control-button" onclick="goHome()">חזור</button>
 </div>
 
 <script>
-    // Add current date
     function displayCurrentDate() {
         const today = new Date();
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -211,7 +208,6 @@
     }
 
     const currentDate = displayCurrentDate();
-
     let counters = [0, 0, 0, 0, 0, 0];
 
     function updateCounter(counterNumber) {
@@ -240,32 +236,36 @@
         document.getElementById("entry-exit-prefix").innerText = `כניסה/יציאה: ${selectedValue}`;
     }
 
+    function formatData() {
+        const titleText = `**שער ${document.getElementById("title-select").value}**`;
+        const entryExitText = `**${document.getElementById("entry-exit-select").value}**`;
+        const commanderName = document.getElementById("commander-input").value || "לא צויין";
+        const notes = document.getElementById("notes-input").value || "אין הערות";
+        const date = `תאריך: ${currentDate}`;
+        return `${titleText}\n${entryExitText}\n${date}\nשם המפקד: ${commanderName}\n` +
+               `מעבר רגלי: ${counters[1]}\n` +
+               `מסורבים (רגלי): ${counters[0]}\n` +
+               `חמורים: ${counters[3]}\n` +
+               `מסורבים (חמורים): ${counters[2]}\n` +
+               `טרקטורים: ${counters[5]}\n` +
+               `מסורבים (טרקטורים): ${counters[4]}\n` +
+               `הערות: ${notes}`;
+    }
+
     function copyData() {
-        const titleText = `**שער ${document.getElementById("title-select").value}**`; // Make title bold
-        const entryExitText = `**${document.getElementById("entry-exit-select").value}**`; // Entry/Exit label
-        const commanderName = document.getElementById("commander-input").value || "לא צויין"; // Commander name or default text
-        const startTime = document.getElementById("start-time").value || "לא צויין"; // Start time or default text
-        const endTime = document.getElementById("end-time").value || "לא צויין"; // End time or default text
-        const notes = document.getElementById("notes-input").value || "אין הערות"; // Default if no notes
-        const date = `תאריך: ${currentDate}`; // Current date
-
-        // Constructing the structured data
-        const data = `${titleText}\n${entryExitText}\n${date}\nשם המפקד: ${commanderName}\n` +
-                     `שעת התחלה: ${startTime}\nשעת סיום: ${endTime}\n\n` +
-                     `מעבר רגלי: ${counters[1]}\n` +
-                     `מסורבים (רגלי): ${counters[0]}\n` +
-                     `חמורים: ${counters[3]}\n` +
-                     `מסורבים (חמורים): ${counters[2]}\n` +
-                     `טרקטורים: ${counters[5]}\n` +
-                     `מסורבים (טרקטורים): ${counters[4]}\n` +
-                     `הערות: ${notes}`;
-
-        // Copy the structured data to the clipboard
+        const data = formatData();
         navigator.clipboard.writeText(data).then(() => {
             alert("הועתק");
         }).catch(err => {
             alert("Failed to copy data: " + err);
         });
+    }
+
+    function sendWhatsApp() {
+        const phoneNumber = "972522121836";
+        const message = encodeURIComponent(formatData());
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappURL, "_blank");
     }
 
     function goHome() {
