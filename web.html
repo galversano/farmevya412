@@ -51,13 +51,9 @@
             text-align: center;
             font-size: 10px;
             padding: 4px;
-            margin-bottom: 5px; /* Space between input and buttons */
+            margin-bottom: 5px;
             border: 1px solid blue;
             border-radius: 3px;
-        }
-        .counter-display {
-            font-size: 8px;
-            margin: 2px 0;
         }
         button {
             padding: 3px;
@@ -110,6 +106,7 @@
     </select>
     <label for="closeHourInput">סגירת שער:</label>
 </div>
+
 <div class="counter-section">
     <h2>מספר נכנסים</h2>
     <input type="number" id="counter1" class="counter-input" value="0" onchange="updateCounterFromInput(1)">
@@ -155,7 +152,6 @@
     </div>
 </div>
 
-
 <div class="notes-section">
     <input type="text" id="notesInput" placeholder="הכנס הערות">
     <label for="notesInput">:הערות</label>
@@ -168,7 +164,6 @@
 </div>
 
 <script>
-    // Add current date
     function displayCurrentDate() {
         const today = new Date();
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -179,7 +174,7 @@
 
     const currentDate = displayCurrentDate();
 
-    let counters = [0, 0, 0, 0, 0]; // Array to store counter values
+    let counters = [0, 0, 0, 0, 0];
 
     function updateCounterFromInput(counterNumber) {
         const inputValue = parseInt(document.getElementById(`counter${counterNumber}`).value, 10);
@@ -198,15 +193,17 @@
         }
     }
 
-
     function copyData() {
-        const title = `**${document.getElementById('title').innerText}**`; // Make title bold in copied text
+        for (let i = 1; i <= 5; i++) {
+            updateCounterFromInput(i);
+        }
+        const title = `**${document.getElementById('title').innerText}**`;
         const date = `תאריך: ${currentDate}`;
-        const commanderName = document.getElementById('commanderInput').value || "לא צויין"; // Default if no name
+        const commanderName = document.getElementById('commanderInput').value || "לא צויין";
         const openHour = document.getElementById('openHourSelect').value;
         const closeHour = document.getElementById('closeHourInput').value;
-        const notes = document.getElementById('notesInput').value || "אין הערות"; // Default if no notes
-        const data = `${title}\n${date}\nשם המפקד: ${commanderName}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counts[0]}\nמספר יוצאים: ${counts[1]}\nרכבים נכנסים: ${counts[2]}\nרכבים יוצאים: ${counts[3]}\nמסורבים: ${counts[4]}\nהערות: ${notes}`;
+        const notes = document.getElementById('notesInput').value || "אין הערות";
+        const data = `${title}\n${date}\nשם המפקד: ${commanderName}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counters[0]}\nמספר יוצאים: ${counters[1]}\nרכבים נכנסים: ${counters[2]}\nרכבים יוצאים: ${counters[3]}\nמסורבים: ${counters[4]}\nהערות: ${notes}`;
         
         navigator.clipboard.writeText(data).then(() => {
             alert("הועתק");
@@ -216,6 +213,7 @@
     }
 
     function sendWhatsApp() {
+        copyData();
         const title = `**${document.getElementById('title').innerText}**`;
         const date = `תאריך: ${currentDate}`;
         const commanderName = document.getElementById('commanderInput').value || "לא צויין";
@@ -224,7 +222,7 @@
         const notes = document.getElementById('notesInput').value || "אין הערות";
         const message = `${title}\n${date}\nשם המפקד: ${commanderName}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counters[0]}\nמספר יוצאים: ${counters[1]}\nרכבים נכנסים: ${counters[2]}\nרכבים יוצאים: ${counters[3]}\nמסורבים: ${counters[4]}\nהערות: ${notes}`;
 
-        const phoneNumber = "972543149995"; // WhatsApp number to send to
+        const phoneNumber = "972543149995";
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, "_blank");
     }
