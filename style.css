@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    }
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* font-family: Arial, sans-serif; */
+    height: 100vh;
+}
+h1,h2{
+    font-family: "Varela Round", sans-serif;
+    font-weight: 700;
+}
+p,label{
+    font-family: "Fredoka", sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+}
+.main-btn {
+      width: 200px; /* Set a fixed width to maintain the size of the buttons */
+      height: 50px; /* Set a fixed height */
+}
+
+.footer {
+    font-size: 15px;
+    color: gray;
+    text-align: center;
+    margin-top: auto;
+    padding: 15px;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+}
+
+.form-select,
+.counter-input{
+font-size: 12px;}
+
+#commander-name,
+#commander-name-olive,
+#notesInput,
+#notesInputOlive{
+    font-size: 13px;
+}
+
+.inc-btn,
+.dec-btn {
+    padding: 2px 2px; /* Adjusts padding to make it smaller */
+    width: 28px; /* Set a fixed width for smaller size */
+    height: 28px; /* Set a fixed height for smaller size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
