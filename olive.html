@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Picking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="py-0 mt-1 text-end d-flex flex-column justify-content-center ">
+        <p class="my-1 d-flex align-items-center text-nowrap">
+            <select class="form-select form-select-sm me-4 flex-grow-1 form-control-sm text-sm text-center" aria-label="gate name" id="gate-name">
+                <option selected value="שער זיתא">שער זיתא</option>
+                <option value="שער עכבה">שער עכבה</option>
+              </select>
+            :שער         
+        </p>
+        <p class="my-1 d-flex align-items-center text-nowrap">
+            <select class="form-select form-select-sm me-4 flex-grow-1 form-control-sm text-sm text-center " aria-label="enter exit" id="enter-exit">
+                <option selected value="כניסה">כניסה</option>
+                <option value="יציאה"> יציאה</option>
+              </select>
+            :כניסה/יציאה         
+        </p>
+        <div class="commander-section my-1 d-flex align-items-center" dir="rtl">
+            <label for="commander-name-olive" class="form-label text-nowrap ms-4">שם מפקד:</label>
+            <input type="text" class="form-control form-control-sm text-sm py-0" id="commander-name-olive" placeholder="הכנס שם" >
+        </div>  
+    </div>
+    <p class="my-1" id="date"></p>
+
+    <div class="container text-center my-1">
+        <div class="row justify-content-center my-1 mx-1">
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">מסורבים (מבוגרים)</p>
+                    <input type="number" id="oliveCounter1" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInputOlive(1)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(1)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(1)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">מבוגרים</p>
+                    <input type="number" id="oliveCounter2" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInputOlive(2)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(2)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(2)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center my-1 mx-1">
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">מסורבים (ילדים)</p>
+                    <input type="number" id="oliveCounter3" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInputOlive(3)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(3)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(3)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">ילדים</p>
+                    <input type="number" id="oliveCounter4" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInputOlive(4)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(4)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(4)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center my-1 mx-1">
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">מסורבים (חמורים)</p>
+                    <input type="number" id="oliveCounter5" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInputOlive(5)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(5)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(5)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">חמורים</p>
+                    <input type="number" id="oliveCounter6" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInputOlive(6)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(6)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(6)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center my-1 mx-1">
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">מסורבים (טרקטורים)</p>
+                    <input type="number" id="oliveCounter7" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInputOlive(7)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(7)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(7)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column justify-content-center align-items-center ">
+                <div class="c border border-1 border-primary rounded-start rounded-end p-2 d-flex flex-column justify-content-center align-items-center"> 
+                    <p class="mb-1">טרקטורים</p>
+                    <input type="number" id="oliveCounter8" class="counter-input mb-2 text-center w-75" value="0" min="0" onchange="updateCounterFromInput(8)">
+                    <div class="buttons-container d-flex flex-row">
+                        <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="incrementOlive(8)"><i class="bi bi-plus"></i></button>
+                        <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrementOlive(8)"><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="notes  mx-auto my-1 d-flex align-items-center" dir="rtl">
+        <label for="notesInputOlive" class="form-label text-nowrap ms-4">הערות:</label>
+        <input type="text" class="form-control py-0 m-0 text-sm" id="notesInputOlive"   placeholder="הכנס הערות"></input>
+    </div>
+
+    <div class="container my-1 d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="copyOliveData()">העתק</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="sendOliveData()">וואטסאפ חמ"ל</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="goHome()">חזור</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="firebase.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
