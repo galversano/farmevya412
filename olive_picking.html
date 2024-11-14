@@ -4,128 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olive Picking Counter</title>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Olive Picking Counter</title>
-        <style>
-            body {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                height: 100vh;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            .title-section {
-                display: flex;
-                align-items: center;
-                font-size: 14px;
-                font-weight: bold;
-                margin: 10px 0;
-                text-align: center;
-            }
-            #title-prefix, #entry-exit-prefix, #commander-label {
-                font-size: 14px;
-            }
-            #title-select, #entry-exit-select, #commander-input {
-                font-size: 14px;
-                padding: 2px;
-                margin-left: 5px;
-            }
-            .time-section {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                margin-top: 5px;
-            }
-            .time-section input[type="text"] {
-                width: 50px;
-                font-size: 12px;
-                padding: 2px;
-                text-align: center;
-            }
-            #date {
-                font-size: 10px;
-                margin-bottom: 10px;
-                text-align: center;
-            }
-            .counters-row {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                margin: 8px 0;
-                width: 90%;
-            }
-            .counter-section {
-                text-align: center;
-                padding: 6px;
-                border: 1px solid blue;
-                border-radius: 3px;
-                width: 45%;
-                box-sizing: border-box;
-            }
-            h2 {
-                font-size: 10px;
-                margin: 5px 0;
-            }
-            .counter-display {
-                font-size: 10px;
-                margin: 3px 0;
-            }
-            button {
-                padding: 2px;
-                font-size: 10px;
-                margin: 0px;
-                width: 40px;
-                height: 30px;
-                cursor: pointer;
-                border-radius: 3px;
-                border: 1px solid blue;
-            }
-            .control-buttons {
-                display: flex;
-                gap: 10px;
-                margin-top: 20px;
-                justify-content: center;
-            }
-            .control-button {
-                padding: 2px 10px;
-                font-size: 12px;
-                cursor: pointer;
-                background-color: lightgray;
-                border-radius: 5px;
-                border: 1px solid gray;
-                text-align: center;
-                width: 100px;
-            }
-            .notes-section {
-                display: flex;
-                align-items: center;
-                font-size: 12px;
-                margin-top: 10px;
-            }
-            .notes-section input[type="text"] {
-                width: 120px;
-                font-size: 12px;
-                padding: 2px;
-                text-align: center;
-                margin-left: 5px;
-            }
-            .counter-input {
-                width: 30px;
-                text-align: center;
-                font-size: 10px;
-                padding: 4px;
-                margin-bottom: 5px; /* Space between input and buttons */
-                border: 1px solid blue;
-                border-radius: 3px;
-            }
-        </style>
-    </head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .title-section {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+        }
+        #title-prefix, #entry-exit-prefix, #commander-label {
+            font-size: 14px;
+        }
+        #title-select, #entry-exit-select, #commander-input {
+            font-size: 14px;
+            padding: 2px;
+            margin-left: 5px;
+        }
+        .time-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .time-section input[type="text"] {
+            width: 50px;
+            font-size: 12px;
+            padding: 2px;
+            text-align: center;
+        }
+        #date {
+            font-size: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .counters-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 8px 0;
+            width: 90%;
+        }
+        .counter-section {
+            text-align: center;
+            padding: 6px;
+            border: 1px solid blue;
+            border-radius: 3px;
+            width: 45%;
+            box-sizing: border-box;
+        }
+        h2 {
+            font-size: 10px;
+            margin: 5px 0;
+        }
+        .counter-display {
+            font-size: 10px;
+            margin: 3px 0;
+        }
+        button {
+            padding: 2px;
+            font-size: 10px;
+            margin: 0px;
+            width: 40px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 3px;
+            border: 1px solid blue;
+        }
+        .control-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .control-button {
+            padding: 2px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            background-color: lightgray;
+            border-radius: 5px;
+            border: 1px solid gray;
+            text-align: center;
+            width: 100px;
+        }
+        .notes-section {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .notes-section input[type="text"] {
+            width: 120px;
+            font-size: 12px;
+            padding: 2px;
+            text-align: center;
+            margin-left: 5px;
+        }
+        .counter-input {
+            width: 30px;
+            text-align: center;
+            font-size: 10px;
+            padding: 4px;
+            margin-bottom: 5px;
+            border: 1px solid blue;
+            border-radius: 3px;
+        }
+    </style>
+</head>
 <body>
 
 <div class="title-section">
@@ -153,7 +149,7 @@
 
 <div class="counters-row">
     <div class="counter-section">
-        <h2>מסורבים (רגלי)</h2>
+        <h2>מסורבים (מבוגרים)</h2>
         <input type="number" id="counter1" class="counter-input" value="0" onchange="updateCounterFromInput(1)">
         <div class="button-container">
             <button onclick="increment(1)">+</button>
@@ -161,11 +157,30 @@
         </div>
     </div>
     <div class="counter-section">
-        <h2>מעבר רגלי</h2>
+        <h2>מבוגרים</h2>
         <input type="number" id="counter2" class="counter-input" value="0" onchange="updateCounterFromInput(2)">
         <div class="button-container">
             <button onclick="increment(2)">+</button>
             <button onclick="decrement(2)">−</button>
+        </div>
+    </div>
+</div>
+
+<div class="counters-row">
+    <div class="counter-section">
+        <h2>מסורבים (ילדים)</h2>
+        <input type="number" id="counter7" class="counter-input" value="0" onchange="updateCounterFromInput(7)">
+        <div class="button-container">
+            <button onclick="increment(7)">+</button>
+            <button onclick="decrement(7)">−</button>
+        </div>
+    </div>
+    <div class="counter-section">
+        <h2>ילדים</h2>
+        <input type="number" id="counter8" class="counter-input" value="0" onchange="updateCounterFromInput(8)">
+        <div class="button-container">
+            <button onclick="increment(8)">+</button>
+            <button onclick="decrement(8)">−</button>
         </div>
     </div>
 </div>
@@ -208,7 +223,6 @@
     </div>
 </div>
 
-
 <div class="notes-section">
     <input type="text" id="notes-input" placeholder="הכנס הערות">
     <label for="notes-input">:הערות</label>
@@ -216,7 +230,7 @@
 
 <div class="control-buttons">
     <button class="control-button" onclick="copyData()">העתק</button>
-    <button class="control-button" onclick="sendWhatsApp()"> ווצאפ חמל</button>
+    <button class="control-button" onclick="sendWhatsApp()">ווצאפ חמל</button>
     <button class="control-button" onclick="goHome()">חזור</button>
 </div>
 
@@ -230,33 +244,32 @@
     }
 
     const currentDate = displayCurrentDate();
-    let counters = [0, 0, 0, 0, 0, 0]; // Assuming counters[3] is for this example
+    let counters = [0, 0, 0, 0, 0, 0, 0, 0];
 
-function increment(counterNumber) {
-    counters[counterNumber - 1] += 1;
-    updateCounterDisplay(counterNumber);
-   }
-
-function decrement(counterNumber) {
-    if (counters[counterNumber - 1] > 0) {
-        counters[counterNumber - 1] -= 1;
+    function increment(counterNumber) {
+        counters[counterNumber - 1] += 1;
         updateCounterDisplay(counterNumber);
     }
-   }
 
-function updateCounterDisplay(counterNumber) {
-    document.getElementById(`counter${counterNumber}`).value = counters[counterNumber - 1];
-  }
+    function decrement(counterNumber) {
+        if (counters[counterNumber - 1] > 0) {
+            counters[counterNumber - 1] -= 1;
+            updateCounterDisplay(counterNumber);
+        }
+    }
 
-function updateCounterFromInput(counterNumber) {
-    const inputValue = parseInt(document.getElementById(`counter${counterNumber}`).value, 10);
-    if (!isNaN(inputValue) && inputValue >= 0) {
-        counters[counterNumber - 1] = inputValue;
-    } else {
+    function updateCounterDisplay(counterNumber) {
         document.getElementById(`counter${counterNumber}`).value = counters[counterNumber - 1];
     }
-  }
 
+    function updateCounterFromInput(counterNumber) {
+        const inputValue = parseInt(document.getElementById(`counter${counterNumber}`).value, 10);
+        if (!isNaN(inputValue) && inputValue >= 0) {
+            counters[counterNumber - 1] = inputValue;
+        } else {
+            document.getElementById(`counter${counterNumber}`).value = counters[counterNumber - 1];
+        }
+    }
 
     function updateTitle() {
         const selectedValue = document.getElementById("title-select").value;
@@ -277,6 +290,8 @@ function updateCounterFromInput(counterNumber) {
         return `${titleText}\n${entryExitText}\n${date}\nשם המפקד: ${commanderName}\n` +
                `מעבר רגלי: ${counters[1]}\n` +
                `מסורבים (רגלי): ${counters[0]}\n` +
+               `ילדים: ${counters[7]}\n` +
+               `מסורבים (ילדים): ${counters[6]}\n` +
                `חמורים: ${counters[3]}\n` +
                `מסורבים (חמורים): ${counters[2]}\n` +
                `טרקטורים: ${counters[5]}\n` +
