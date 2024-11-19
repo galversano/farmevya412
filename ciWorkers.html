@@ -10,55 +10,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .input-box {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .input-field {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .save-data-ci {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <h2 class="my-2">הזנת סייען</h2>
+    <h2 class="my-2 text-center">הזנת סייען</h2>
 
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="row">
-            <div class="input-box" dir="rtl">
-                <div class="input-field">
-                </div>
+        <div class="row w-100">
+            <div class="col-md-6 mx-auto input-box" dir="rtl">
                 <div class="input-field">
                     <label for="commanderName-ci">שם מפקד</label>
-                   <input type="text" class="input" id="commanderName-ci" autocomplete="off" autocomplete="new-password">
-                    
+                    <input type="text" class="form-control" id="commanderName-ci" autocomplete="off" autocomplete="new-password">
                 </div>
                 <div class="input-field">
-                     <label for="ci-name-first">שם פרטי סייען</label>
-                    <input type="text" class="input" id="ci-name-first" required autocomplete="off" autocomplete="new-password">
-                    
+                    <label for="ci-name-first">שם פרטי סייען</label>
+                    <input type="text" class="form-control" id="ci-name-first" required autocomplete="off" autocomplete="new-password">
                 </div>
                 <div class="input-field">
-                     <label for="ci-name-last">שם משפחה סייען</label>
-                    <input type="text" class="input" id="ci-name-last" required autocomplete="off" autocomplete="new-password">
-                
+                    <label for="ci-name-last">שם משפחה סייען</label>
+                    <input type="text" class="form-control" id="ci-name-last" required autocomplete="off" autocomplete="new-password">
                 </div>
                 <div class="input-field">
-                     <label for="ci-name-last">שם משפחה סייען</label>
-                    <input type="text" class="input" id="ci-id" autocomplete="off" autocomplete="new-password">
-                    
+                    <label for="ci-id">תעודת זהות סייען</label>
+                    <input type="text" class="form-control" id="ci-id" autocomplete="off" autocomplete="new-password">
                 </div>
                 <div class="input-field">
                     <label for="ci-phone">סוג רכב סייען</label>
-                    <input type="text" class="input" id="ci-phone" autocomplete="off" autocomplete="new-password">
-
+                    <input type="text" class="form-control" id="ci-phone" autocomplete="off" autocomplete="new-password">
                 </div>
                 <div class="input-field">
                     <label for="address">מספר רכב סייען</label>
-                    <input type="text" class="input" id="address" autocomplete="off" autocomplete="new-password">
-                   
+                    <input type="text" class="form-control" id="address" autocomplete="off" autocomplete="new-password">
                 </div>
                 <div class="input-field d-flex justify-content-center">
-                    <input type="submit" class="save-data-ci" value="שמור" >
+                    <input type="submit" class="btn btn-primary save-data-ci" value="שמור">
                 </div>
             </div>
         </div>
     </div>
+
     <div class="container mt-3">
         <div class="table-responsive-md">
-            <table class=" table table-sm border my-0 table-bordered table-hover table-striped align-middle">
+            <table class="table table-sm border my-0 table-bordered table-hover table-striped align-middle">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
