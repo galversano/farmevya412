@@ -14,12 +14,19 @@
         body {
             font-family: 'Fredoka', 'Varela Round', sans-serif;
         }
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .input-field {
+        .input-row {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
+        }
+        .input-row label {
+            min-width: 150px; /* Adjust width to align labels */
+            margin-right: 10px;
+            text-align: right;
+            font-weight: bold;
+        }
+        .form-control {
+            flex: 1; /* Make input take up remaining space */
         }
         .save-data-ci {
             width: 100%;
@@ -33,28 +40,28 @@
 
     <div class="container d-flex justify-content-center align-items-center">
         <div class="row w-100">
-            <div class="col-md-6 mx-auto" dir="rtl">
-                <div class="input-field">
+            <div class="col-md-8 mx-auto" dir="rtl">
+                <div class="input-row">
                     <label for="commanderName-ci">שם מפקד</label>
                     <input type="text" class="form-control" id="commanderName-ci" autocomplete="off" autocomplete="new-password">
                 </div>
-                <div class="input-field">
+                <div class="input-row">
                     <label for="ci-name-first">שם פרטי סייען</label>
                     <input type="text" class="form-control" id="ci-name-first" required autocomplete="off" autocomplete="new-password">
                 </div>
-                <div class="input-field">
+                <div class="input-row">
                     <label for="ci-name-last">שם משפחה סייען</label>
                     <input type="text" class="form-control" id="ci-name-last" required autocomplete="off" autocomplete="new-password">
                 </div>
-                <div class="input-field">
+                <div class="input-row">
                     <label for="ci-id">תעודת זהות סייען</label>
                     <input type="text" class="form-control" id="ci-id" autocomplete="off" autocomplete="new-password">
                 </div>
-                <div class="input-field">
+                <div class="input-row">
                     <label for="ci-phone">סוג רכב סייען</label>
                     <input type="text" class="form-control" id="ci-phone" autocomplete="off" autocomplete="new-password">
                 </div>
-                <div class="input-field">
+                <div class="input-row">
                     <label for="address">מספר רכב סייען</label>
                     <input type="text" class="form-control" id="address" autocomplete="off" autocomplete="new-password">
                 </div>
