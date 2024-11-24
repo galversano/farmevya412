@@ -49,7 +49,7 @@ function getGateData() {
     }
     
         // Extract notes from the left column
-        let notesInput = row.querySelector(".notes-gates").value || "אין הערות";
+        let notesInput = row.querySelector(".notes-gates").value;
     
         let rowData = `${gateName} , ${status} , ${notesInput}` + "\n";
         Data+=rowData;
