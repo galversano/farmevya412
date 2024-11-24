@@ -1,4 +1,9 @@
 ///////// zfoni ///////////////////////////////////////
+function goHome() {
+    window.location.href = 'index.html';
+}
+
+
 function getGateData() {
     // let gateDataArray = [];
     // for (let i = 1; i <= 24; i++) {
@@ -103,6 +108,9 @@ function saveGates(){
     
         let rowData = `${gateName} , ${status} , ${notesInput}` + "\n";
         Data+=rowData;
+
+
+
 
     });
 }
