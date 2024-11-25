@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 class="mt-2">בדיקת שערים דרומי</h2>
+
+    <div class="container mt-3">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-auto">
+                <select class="form-select form-select-sm" id="shiftSelect" aria-label="Select shift" dir="rtl">
+                    <option selected disabled>בחר משמרת</option>
+                    <option value="בוקר">בוקר</option>
+                    <option value="צהריים">צהריים</option>
+                    <option value="ערב">ערב</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container gates">
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                פשפש 556
+            </div>  
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="sha'ar_rehan_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="sha'ar_rehan" id="sha'ar_rehan_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="sha'ar_rehan_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="sha'ar_rehan" id="sha'ar_rehan_bad">
+                </div>
+            </div>
+    
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate1"   placeholder="הכנס הערות"></input>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                מעביר מים 556
+            </div>  
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_345_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_345" id="water_way_345_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_345_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_345" id="water_way_345_bad">
+                </div>
+            </div>
+    
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate2"   placeholder="הכנס הערות"></input>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                מעביר מים 550
+            </div>  
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_354_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_354" id="pishpesh_354_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_354_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_354" id="pishpesh_354_bad">
+                </div>
+            </div>
+    
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate3"   placeholder="הכנס הערות"></input>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                מעביר מים 544
+            </div>  
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_365_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_365" id="water_way_365_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_365_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_365" id="water_way_365_bad">
+                </div>
+            </div>
+    
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate4"   placeholder="הכנס הערות"></input>
+                </div>
+            </div>
+        </div>
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                פשפש 535
+            </div>
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_365_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_365" id="pishpesh_365_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_365_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_365" id="pishpesh_365_bad">
+                </div>
+            </div>
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate5" placeholder="הכנס הערות">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                מעביר מים 535
+            </div>
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_376_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_376" id="water_way_376_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_376_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_376" id="water_way_376_bad">
+                </div>
+            </div>
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate6" placeholder="הכנס הערות">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                מעביר מים 525
+            </div>
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_383_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_383" id="water_way_383_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="water_way_383_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="water_way_383" id="water_way_383_bad">
+                </div>
+            </div>
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate7" placeholder="הכנס הערות">
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                פשפש 525
+            </div>
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_383_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_383" id="pishpesh_383_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_383_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_383" id="pishpesh_383_bad">
+                </div>
+            </div>
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate8" placeholder="הכנס הערות">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row my-1 d-flex justify-content-center" dir="rtl">
+            <!-- Right Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                פשפש 464
+            </div>
+            <!-- Middle Column -->
+            <div class="col d-flex align-items-center justify-content-start">
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_386_good">
+                        <i class="bi bi-check-lg" style="color: green; font-size: 19px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_386" id="pishpesh_386_good" >
+                </div>
+                <div class="d-flex align-items-center ms-2">
+                    <label class="form-check-label ms-1" for="pishpesh_386_bad">
+                        <i class="bi bi-x-lg" style="color: red; font-size: 17px;"></i>
+                    </label>
+                    <input class="form-check-input ms-1" type="radio" name="pishpesh_386" id="pishpesh_386_bad">
+                </div>
+            </div>
+            <!-- Left Column -->
+            <div class="col d-flex align-items-center justify-content-start me-2">
+                <div class="notes d-flex align-items-center">
+                    <input type="text" class="form-control notes-gates py-0 m-0 text-sm" id="notesGate9" placeholder="הכנס הערות">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container my-1 d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="copyGateData()">העתק</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="sendGatWhatsApp()">ווצאפ חמ"ל</button>
+        <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="goHome()">חזור</button>
+    </div>
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="firebase.js"></script>
+    <script src="gate_nApp.js"></script>
+
+</body>
+</html>
