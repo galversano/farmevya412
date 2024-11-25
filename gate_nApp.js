@@ -13,8 +13,6 @@ function displayCurrentDate() {
     firestore.collection("412A").doc(stringWithDots).set({});
     return formattedDate;
 }
-
-
 function getGateData() {
     let Data = "";
     console.log("now im here");
@@ -42,12 +40,27 @@ function getGateData() {
 
         let gateName = gateNameElement.textContent.trim(); 
 
-        // Determine the status from the checked radio button
+        // Determine the status from the dropdown or radio buttons
+        let dropdown = row.querySelector('select[id*="select"]'); // Find dropdown
         let goodRadio = row.querySelector('input[type="radio"][id*="good"]'); 
         let badRadio = row.querySelector('input[type="radio"][id*="bad"]'); 
 
         let status = "לא ידוע"; // Default status
-        if (goodRadio && goodRadio.checked) {
+
+        if (dropdown) {
+            // Handle dropdown if it exists
+            let selectedValue = dropdown.value;
+            let highestOption = Array.from(dropdown.options).reduce((max, option) => {
+                let num = parseInt(option.value, 10);
+                return num > max ? num : max;
+            }, 0);
+            status = `${selectedValue}/${highestOption} מנעולים`; // Format as selected/highest מנעולים
+
+            // Add "תקין" if selectedValue equals highestOption
+            if (parseInt(selectedValue, 10) === highestOption) {
+                status += " ,מעביר תקין, ";
+            }
+        } else if (goodRadio && goodRadio.checked) {
             status = "תקין"; 
         } else if (badRadio && badRadio.checked) {
             status = "לא תקין"; 
@@ -70,19 +83,18 @@ function getGateData() {
 }
 
 
-
 function saveGateData() {
     // Get the current date in the desired format
     const currentDate = new Date();
     const dateWithDots = currentDate.toLocaleDateString('he-IL').replace(/\//g, '.'); // Format date as "DD.MM.YYYY"
 
     // Get the selected shift value from the dropdown
-    const shiftSelect = document.getElementById('shiftSelect');
-    const selectedShift = shiftSelect.value;
+    let shiftSelect = document.getElementById('shiftSelect'); // Changed from const to let
+    let selectedShift = shiftSelect.value;
 
     // Validate the shift selection
     if (!selectedShift || selectedShift === "בחר משמרת") {
-        selectedShift === "לא ידוע"
+        selectedShift = "לא ידוע"; // Fixed assignment
     }
 
     // Reference Firebase Firestore
@@ -101,12 +113,22 @@ function saveGateData() {
 
         let gateName = gateNameElement.textContent.trim();
 
-        // Determine the status from the checked radio button
+        // Determine the status from the dropdown or radio buttons
+        let dropdown = row.querySelector('select[id*="select"]'); // Find dropdown
         let goodRadio = row.querySelector('input[type="radio"][id*="good"]'); // Radio for "good"
         let badRadio = row.querySelector('input[type="radio"][id*="bad"]'); // Radio for "bad"
 
         let status = "לא ידוע"; // Default status
-        if (goodRadio && goodRadio.checked) {
+
+        if (dropdown) {
+            // Handle dropdown if it exists
+            let selectedValue = dropdown.value;
+            let highestOption = Array.from(dropdown.options).reduce((max, option) => {
+                let num = parseInt(option.value, 10);
+                return num > max ? num : max;
+            }, 0);
+            status = `${selectedValue}/${highestOption} מנעולים`; // Format as selected/highest מנעולים
+        } else if (goodRadio && goodRadio.checked) {
             status = "תקין"; // Good is checked
         } else if (badRadio && badRadio.checked) {
             status = "לא תקין"; // Bad is checked
@@ -133,7 +155,6 @@ function saveGateData() {
             .catch(error => console.error(`Error saving data for gate ${gateName}:`, error));
     });
 }
-
 
 
 function copyGateData() {
