@@ -150,8 +150,11 @@ function saveGateData() {
         };
 
         // Save the data to Firebase
-        db.collection("412A").doc(dateWithDots) // Replace with your document structure as needed
-            .collection("gateZfoni").doc(gateName)
+        db.collection("412A").doc(dateWithDots) // Date document
+            .collection("gateZfoni") // Add "gateDromi" collection
+            .doc(selectedShift) // Shift collection
+            .collection("gates") // Collection for all gates within the shift
+            .doc(gateName) // Unique document for each gate
             .set(data, { merge: true })
             .then(() => console.log(`Data for gate ${gateName} saved successfully`))
             .catch(error => console.error(`Error saving data for gate ${gateName}:`, error));
