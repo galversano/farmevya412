@@ -89,12 +89,12 @@ function saveGateData() {
     const dateWithDots = currentDate.toLocaleDateString('he-IL').replace(/\//g, '.'); // Format date as "DD.MM.YYYY"
 
     // Get the selected shift value from the dropdown
-    let shiftSelect = document.getElementById('shiftSelect'); // Changed from const to let
+    let shiftSelect = document.getElementById('shiftSelect');
     let selectedShift = shiftSelect.value;
 
     // Validate the shift selection
     if (!selectedShift || selectedShift === "בחר משמרת") {
-        selectedShift = "לא ידוע"; // Fixed assignment
+        selectedShift = "לא ידוע";
     }
 
     // Reference Firebase Firestore
@@ -147,9 +147,12 @@ function saveGateData() {
             shift: selectedShift // Use the selected shift value
         };
 
-        // Save the data to Firebase
-        db.collection("412A").doc(dateWithDots) // Replace with your document structure as needed
-            .collection("gateDromi").doc(gateName)
+        // Save the data to Firestore with the additional "gateDromi" collection
+        db.collection("412A").doc(dateWithDots) // Date document
+            .collection("gateDromi") // Add "gateDromi" collection
+            .doc(selectedShift) // Shift collection
+            .collection("gates") // Collection for all gates within the shift
+            .doc(gateName) // Unique document for each gate
             .set(data, { merge: true })
             .then(() => console.log(`Data for gate ${gateName} saved successfully`))
             .catch(error => console.error(`Error saving data for gate ${gateName}:`, error));
