@@ -120,7 +120,7 @@ function sendWhatsApp(){
     if(getCurrentShift()!=null){
         getData();
         saveData();
-        const phoneNumber = "972543149995";
+        const phoneNumber = "972522121836";
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
         window.open(whatsappURL, "_blank");
     }
@@ -130,7 +130,7 @@ function sendWhatsApp(){
             console.log("ok ok ok ");
             getData();
             saveData();
-            const phoneNumber = "972543149995";
+            const phoneNumber = "972522121836";
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
             window.open(whatsappURL, "_blank");
         } else {
