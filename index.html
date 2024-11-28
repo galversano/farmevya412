@@ -11,53 +11,62 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Fade-out and scale-down animation */
-    .fade-scale-out {
-      animation: fadeScaleOut 0.7s ease-in-out forwards;
+    /* Button animation styles */
+    .buttons-container.animate-buttons button {
+      animation: moveUpAndFadeOut 0.7s ease-in-out forwards;
     }
 
-    @keyframes fadeScaleOut {
+    @keyframes moveUpAndFadeOut {
       0% {
+        transform: translateY(0);
         opacity: 1;
-        transform: scale(1);
-        background-color: white;
-      }
-      50% {
-        opacity: 0.5;
-        transform: scale(0.9);
-        background-color: #f0f8ff; /* Light blue transition */
       }
       100% {
+        transform: translateY(-50px);
         opacity: 0;
-        transform: scale(0.8);
-        background-color: #e6f7ff; /* Softer blue at the end */
       }
+    }
+
+    /* Delay individual button animations for a staggered effect */
+    .buttons-container.animate-buttons button:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .buttons-container.animate-buttons button:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    .buttons-container.animate-buttons button:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+    .buttons-container.animate-buttons button:nth-child(4) {
+      animation-delay: 0.3s;
     }
   </style>
 </head>
 <body>
-    <h1 class="display-5 mt-4 ">בחירת אפשרות</h1>
-    <div class="container d-flex flex-column align-items-center gap-4 mt-3">
-      <!-- Top Buttons -->
-      <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-md-4 gap-2">
-          <button type="button" class="btn btn-outline-info main-btn" onclick="navigateTo('pillbox.html')">חסם באקה 427</button>
-          <button type="button" class="btn btn-outline-info main-btn" onclick="navigateTo('olive.html')">שער זיתא/ע עכבה/קפין</button>
-          <button type="button" class="btn btn-outline-info main-btn" onclick="navigateTo('gates.html')">מעבירים צפוני</button>
-          <button type="button" class="btn btn-outline-info main-btn" onclick="navigateTo('gates_n.html')">מעבירים דרומי</button>
-      </div>
+  <h1 class="display-5 mt-4 ">בחירת אפשרות</h1>
+  <div class="container d-flex flex-column align-items-center gap-4 mt-3">
+    <!-- Buttons Container -->
+    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-md-4 gap-2 buttons-container">
+      <button type="button" class="btn btn-outline-info main-btn" onclick="navigateWithAnimation('pillbox.html')">חסם באקה 427</button>
+      <button type="button" class="btn btn-outline-info main-btn" onclick="navigateWithAnimation('olive.html')">שער זיתא/ע עכבה/קפין</button>
+      <button type="button" class="btn btn-outline-info main-btn" onclick="navigateWithAnimation('gates.html')">מעבירים צפוני</button>
+      <button type="button" class="btn btn-outline-info main-btn" onclick="navigateWithAnimation('gates_n.html')">מעבירים דרומי</button>
     </div>
-  
-    <footer class="footer text-muted mt-5">
-        <p>ממלאים את הטופס, לוחצים העתק ומדביקים בקלות בווצאפ :)<br>תהנו</p>
-        <small>&copy; חוות אביה & ורסנו</small>
-    </footer>
+  </div>
+
+  <footer class="footer text-muted mt-5">
+    <p>ממלאים את הטופס, לוחצים העתק ומדביקים בקלות בווצאפ :)<br>תהנו</p>
+    <small>&copy; חוות אביה & ורסנו</small>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function navigateTo(page) {
-      // Add the fade-scale-out class to the body
-      document.body.classList.add('fade-scale-out');
-      // Wait for the animation to complete, then navigate
+    function navigateWithAnimation(page) {
+      // Add the animation class to the buttons container
+      const buttonsContainer = document.querySelector('.buttons-container');
+      buttonsContainer.classList.add('animate-buttons');
+      
+      // Wait for the animation to complete before navigating
       setTimeout(() => {
         window.location.href = page;
       }, 700); // Match the animation duration (0.7s)
